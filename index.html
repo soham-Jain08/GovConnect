@@ -258,7 +258,7 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="giveFeedback.html">Give Feedback</a>
-      <a href="#">View Feedback</a>
+      <a href="viewFeedback.html">View Feedback</a>
     </nav>
   </header>
 
@@ -300,12 +300,28 @@
 
   <!-- Right column: track feedback -->
   <div class="track-box">
-    <h3>Track Your Feedback -</h3>
+    <!-- <h3>Track Your Feedback -</h3>
     <p>Enter your Tracking Id -</p>
     <input type="text" placeholder="Tracking ID" />
-    <button>Check Status</button>
+    <button>Check Status</button> -->
+    <form onsubmit="event.preventDefault(); validateTrackingId();">
+    <h3>Track Your Feedback -</h3>
+    <label for="trackingInput">Enter your Tracking ID:</label>
+    <input type="text" id="trackingInput" name="trackingId" placeholder="e.g. 12AB1234" required />
+    <button type="submit">Check Status</button>
+  </form>
   </div>
 </div>
+
+<!-- Right column: track feedback (inside a form now) -->
+<!-- <div class="track-box">
+  <form onsubmit="event.preventDefault(); validateTrackingId();">
+    <h3>Track Your Feedback -</h3>
+    <label for="trackingInput">Enter your Tracking ID:</label>
+    <input type="text" id="trackingInput" name="trackingId" placeholder="e.g. 12AB1234" required />
+    <button type="submit">Check Status</button>
+  </form>
+</div> -->
 
 
 <!-- 
@@ -343,6 +359,21 @@
     <h3>Contact Us -</h3>
     <p>email Id - govconnect@gmail.com<br />helpline number - 1722 80 9465</p>
   </div> -->
+
+<script>
+  function validateTrackingId() {
+    const input = document.getElementById('trackingInput').value.trim();
+    const pattern = /^[0-9]{2}[A-Z]{2}[0-9]{4}$/;
+
+    if (pattern.test(input)) {
+      alert("Tracking ID is valid. Checking status...");
+      // You can redirect or perform fetch here
+    } else {
+      alert("Invalid Tracking ID format!\nFormat must be: 2 digits + 2 letters + 4 digits (e.g., 12AB1234)");
+    }
+  }
+</script>
+
 
   <footer>
     Margadarshan Sohan Kumar Sirji...
