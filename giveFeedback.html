@@ -146,11 +146,20 @@
       cursor: pointer;
       text-decoration: none;
     }
+    .feedback-section select {
+  width: 30%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #999;
+  font-family: Arial, sans-serif;
+}
+
 
     .feedback-section .reset-btn {
       background-color: red;
       color: white;
-      
+     
     }
 
     .feedback-section .submit-btn {
@@ -229,28 +238,101 @@
     <img src="neta.png" alt="Namaste Icon">
   </div>
 
-  <!-- Feedback Form -->
+ <form id="feedbackForm">
   <div class="feedback-section">
     <h3>Write your Feedback..</h3>
-    <input type="text" placeholder="Subject">
-    <textarea rows="6" placeholder="Type your Feedback"></textarea>
-    
+
+    <input type="text" placeholder="Subject" required>
+    <textarea rows="6" placeholder="Type your Feedback" required></textarea>
+
     <div class="input-row">
-      <input type="text" placeholder="Related Department">
-      <input type="text" placeholder="City/Town/Village">
-      <input type="text" placeholder="State">
-      <input type="date">
+      <select required>
+        <option value="" disabled selected>Select Related Department</option>
+        <option>Ministry of Education</option>
+        <option>Ministry of Power</option>
+        <option>Ministry of Railways</option>
+        <option>Ministry of Roads and Highways</option>
+        <option>Ministry of Women and Child Development</option>
+        <option>Ministry of Water Resources</option>
+      </select>
+
+      <input type="text" placeholder="City/Town/Village" required>
+
+      <select required>
+        <option value="" disabled selected>Select State / UT</option>
+        <option>Andhra Pradesh</option>
+        <option>Arunachal Pradesh</option>
+        <option>Assam</option>
+        <option>Bihar</option>
+        <option>Chhattisgarh</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
+        <option>Haryana</option>
+        <option>Himachal Pradesh</option>
+        <option>Jharkhand</option>
+        <option>Karnataka</option>
+        <option>Kerala</option>
+        <option>Madhya Pradesh</option>
+        <option>Maharashtra</option>
+        <option>Manipur</option>
+        <option>Meghalaya</option>
+        <option>Mizoram</option>
+        <option>Nagaland</option>
+        <option>Odisha</option>
+        <option>Punjab</option>
+        <option>Rajasthan</option>
+        <option>Sikkim</option>
+        <option>Tamil Nadu</option>
+        <option>Telangana</option>
+        <option>Tripura</option>
+        <option>Uttar Pradesh</option>
+        <option>Uttarakhand</option>
+        <option>West Bengal</option>
+        <option>Andaman and Nicobar Islands</option>
+        <option>Chandigarh</option>
+        <option>Dadra and Nagar Haveli and Daman and Diu</option>
+        <option>Delhi</option>
+        <option>Jammu and Kashmir</option>
+        <option>Ladakh</option>
+        <option>Lakshadweep</option>
+        <option>Puducherry</option>
+      </select>
+
+      <input type="date" required>
+    </div>
+
+    <div class="upload-section">
+      <label for="mediaUpload">Upload Images or Videos (optional)</label>
+      <input type="file" id="mediaUpload" name="mediaUpload" accept="image/*,video/*" multiple>
     </div>
 
     <div class="buttons">
-      <button class="reset-btn">Reset</button>
-      <button class="submit-btn">Submit</button>
+      <button type="reset" class="reset-btn">Reset</button>
+      <button type="submit" class="submit-btn">Submit</button>
     </div>
   </div>
+</form>
 
   <footer>
     Margadarshan Sohan Kumar Sirji...
   </footer>
+<script>
+  document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent actual form submission
+
+    const form = e.target;
+
+    if (!form.checkValidity()) {
+      alert("⚠️ Please fill all required fields before submitting.");
+      return;
+    }
+
+    alert("✅ Feedback submitted successfully!");
+
+    // Optionally: Reset form or send data via AJAX
+    form.reset();
+  });
+</script>
 
 </body>
 </html>
